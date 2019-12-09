@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+<<<<<<< HEAD
     'articles',
     'bootstrap4'
+=======
+    'articles'
+>>>>>>> 7647ba4467fba21fdd20d103338fd26cecfd4f3b
 ]
 
 MIDDLEWARE = [
@@ -57,9 +61,13 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [
             'templates' # Даёт понять Django, что папка templates находится в корне с проектом.
         ],
+=======
+        'DIRS': [],
+>>>>>>> 7647ba4467fba21fdd20d103338fd26cecfd4f3b
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

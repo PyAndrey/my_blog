@@ -21,7 +21,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('', views.index, name='index'),
+=======
+    path('', views.index),
+>>>>>>> 7647ba4467fba21fdd20d103338fd26cecfd4f3b
     path('accounts/', include('accounts.urls')),
     path('articles/', include('articles.urls')),
 ]
