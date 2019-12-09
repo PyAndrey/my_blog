@@ -7,7 +7,7 @@
 {% block content %}
 
 <form action="{% url 'index' %}" method="post" class="form">
-    {% csrf_token %} 
+    {% csrf_token %}
     {% for field in form %} 
         {% bootstrap_field field %} 
     {% endfor %}
