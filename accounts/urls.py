@@ -1,10 +1,10 @@
-from django.urls import path
+from django.conf.urls import url
+from django.contrib.auth.views import LoginView
 
 from . import views
 
 urlpatterns = [
-    path('sign-up', views.sign_up),
-    path('sign-in', views.sign_in),
-    path('my-account', views.my_account),
-    path('friends/<str:user>', views.get_friends),
+    url(r'^login/$', LoginView.as_view(template_name='./accounts/login.html'), name='login'),
+    url(r'^logout/$', views.logout_view, name='logout'),
+    url(r'^register/$', views.register, name='register')
 ]

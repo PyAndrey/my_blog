@@ -1,10 +1,53 @@
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>My Praktikum Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Журнал обучения</title>
+    {% bootstrap_css %}{% bootstrap_javascript %}
 </head>
+
 <body>
-    <h1>Главная страница блога.</h1>
+    <nav class="navbar navbar-dark navbar-expand-md bg-faded justify-content-center bg-dark ">
+        <a href="{% url 'index' %}" class="navbar-brand d-flex w-50 mr-auto">Журнал обучения</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="collapsingNavbar3" class="navbar-collapse collapse w-100">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end text-center">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Темы</a>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">Hello, {{user.username}}.</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Зарегистрироваться</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="conteiner">
+        <div class="page-header">
+            {% block header %} {% endblock header %}
+        </div>
+        <div>
+            {% block content %} {% endblock content %}
+        </div>
+    </div>
 </body>
+
 </html>

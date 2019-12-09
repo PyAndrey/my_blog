@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 # для url без аргументов (для главной страницы)
 def index(request): 
-    return HttpResponse('<h1>Главная страница проекта My Blog</h1>')
+    return render(request, 'index.html')
