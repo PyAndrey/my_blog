@@ -58,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'templates'
+            'templates' # Даёт понять Django, что папка templates находится в корне с проектом.
         ],
         'APP_DIRS': True,
         'OPTIONS': {
