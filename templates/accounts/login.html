@@ -8,24 +8,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
   </head>
   <body>
-      {% comment %} action="{% url 'dashboard' %}" - form отправляет данные по адресу dashboard {% endcomment %}
-      <form action="{% url 'dashboard' %}" class="login-form">
+      {% comment %} action="{% url 'my-account' %}" - form отправляет данные по адресу в функцию my_account {% endcomment %}
+      <form action="{% url 'my-account' %}" class="login-form" method="post">
+        {% csrf_token %}
         <h1>Авторизация</h1>
 
         <div class="txtb">
-          <input type="text">
+          {% comment %} username = request.POST['username'] {% endcomment %}
+          <input type="text" name="username">
           <span data-placeholder="Логин"></span>
         </div>
 
         <div class="txtb">
-          <input type="password">
+          {% comment %} password = request.POST['password'] {% endcomment %}
+          <input type="password" name="password">
           <span data-placeholder="Пороль"></span>
         </div>
 
         <input type="submit" class="logbtn" value="Войти">
 
         <div class="bottom-text">
-          У вас нет аккаунта? <a href="#">Регистрация</a>
+          У вас нет аккаунта? <a href="{% url "register" %}">Регистрация</a>
         </div>
 
       </form>
