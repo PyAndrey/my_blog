@@ -1,21 +1,47 @@
-{% extends 'index.html' %} 
-{% load bootstrap4 %} 
-{% block header %}
-<h2>Log in to your account.</h2>
-{% endblock header %} 
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static "accounts/style.css" %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+      {% comment %} action="{% url 'dashboard' %}" - form отправляет данные по адресу dashboard {% endcomment %}
+      <form action="{% url 'dashboard' %}" class="login-form">
+        <h1>Авторизация</h1>
 
-{% block content %}
+        <div class="txtb">
+          <input type="text">
+          <span data-placeholder="Логин"></span>
+        </div>
 
-<form action="{% url 'index' %}" method="post" class="form">
-    {% csrf_token %}
-    {% for field in form %} 
-        {% bootstrap_field field %} 
-    {% endfor %}
+        <div class="txtb">
+          <input type="password">
+          <span data-placeholder="Пороль"></span>
+        </div>
 
-    {% buttons %}
-        {% comment %} value="{% url 'index' %} - преренаправляет пользователя в именованную функцию index {% endcomment %}
-        <button name="submit" class="btn btn-primary" value="{% url 'index' %}">log in</button> 
-    {% endbuttons %}
-</form>
+        <input type="submit" class="logbtn" value="Войти">
 
-{% endblock content %}
+        <div class="bottom-text">
+          У вас нет аккаунта? <a href="#">Регистрация</a>
+        </div>
+
+      </form>
+
+      <script type="text/javascript">
+      $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+
+      </script>
+
+
+  </body>
+</html>
