@@ -3,7 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-
+from django.contrib.auth.models import User
+from articles.models import Post
 
 # Create your views here.
 def logout_view(request):
@@ -26,11 +27,7 @@ def register(request):
     return render(request, './accounts/register.html', context)
 
 
-def my_account(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        # Redirect to a success page.
-    return HttpResponseRedirect(reverse('index'))
+def my_account(request, id):
+    # Фильтр постов по id пользователя
+    posts = Post.objects.filter(owner_id=id)
+    return render(request, './accounts/my_account.html', context={'posts':posts})

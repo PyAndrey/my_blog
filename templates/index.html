@@ -24,7 +24,7 @@
                     <a class="nav-link" href="#">Темы</a>
                 </li>
                 <li class="nav-item">
-                    <p class="nav-link">Hello, {{user.username}}.</p>
+                    <a class="nav-link" href="{% url 'my-account' user.id %}">Hello, {{user.username}}.</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
