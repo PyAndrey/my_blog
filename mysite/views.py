@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from articles.models import Post
 
-# для url без аргументов (для главной страницы)
-def index(request): 
-    return render(request, 'index.html')
+
+def index(request):
+    posts = Post.objects.all()
+    return render(request, 'index.html', context={'posts': posts})

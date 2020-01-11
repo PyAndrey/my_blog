@@ -1,12 +1,24 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from django.http.response import HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.contrib.auth.models import User
 from articles.models import Post
+from django.contrib.auth.models import User
 
-# Create your views here.
+
+def login(request):
+    if request.method != 'POST':
+        form = AuthenticationForm()
+    else:
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            return HttpResponseRedirect(reverse('my-account', args=[user.id]))
+    context = {'form': form}
+    return render(request, './accounts/login2.html', context)
+
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))

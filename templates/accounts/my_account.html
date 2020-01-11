@@ -1,10 +1,21 @@
-Привет мир!
-{% if user.is_authenticated %}
-<p class="nav-link">Hello, {{user.username}}.</p>
-{% for post in posts %}
-    <p>{{ post.title }}</p>
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="mb-5">Posts:</h1>
+
+    {% for post in posts %}
+        <div class="card">
+            <div class="card-header">
+                {{ post.date_added }}
+            </div>
+                <div class="card-body" style="width: 100px">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.text|truncatewords:15 }}</p>
+                <a href="#" class="btn btn-light">Переход куда-нибудь</a>
+            </div>
+        </div>
 {% endfor %}
-{% else %}
-<a class="nav-link" href="{% url 'register' %}">Зарегистрироваться</a>
-<a class="nav-link" href="{% url 'login' %}">Войти</a>
-{% endif %}
+
+{% endblock content %}
+

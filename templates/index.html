@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Журнал обучения</title>
+    <title>{% block title %}Журнал обучения{% endblock title %}</title>
     {% bootstrap_css %}{% bootstrap_javascript %}
 </head>
 
@@ -40,14 +40,9 @@
             </ul>
         </div>
     </nav>
-    <div class="conteiner">
-        <div class="page-header">
-            {% block header %} {% endblock header %}
-        </div>
-        <div>
-            {% block content %} {% endblock content %}
-        </div>
-    </div>
+    {% block content %}
+
+    {% endblock content %}
 </body>
 
 </html>

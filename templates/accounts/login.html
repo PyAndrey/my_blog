@@ -9,7 +9,7 @@
   </head>
   <body>
       {% comment %} action="{% url 'my-account' %}" - form отправляет данные по адресу в функцию my_account {% endcomment %}
-      <form action="{% url 'my-account' %}" class="login-form" method="post">
+      <form action="{% url 'my-account' user.id %}" class="login-form" method="post">
         {% csrf_token %}
         <h1>Авторизация</h1>
 
